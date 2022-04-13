@@ -3,6 +3,11 @@ package com.example.exsto.globalEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class represents a task in Exsto and all of it's instance variables have their own getters and setters.
+ * @author Christian Edvall
+ * @version 1.0
+ */
 public class Task {
     private String header;
     private String description;
@@ -70,52 +75,119 @@ public class Task {
     public void setComments(HashMap<String, String> comments) {
         this.comments = comments;
     }
+    //Osäker kring hur implementation av task ID ska fungera så lämnar detta tillsvidare.
+    public int getTASK_ID(){
+        return TASK_ID;
+    }
+    public void setTASK_ID(){
+        
+    }
 
+    /**
+     * This is Tasks inner class, this class is a builder and is used in order to create new tasks.
+     * @author Christian Edvall
+     * @version
+     */
     public class TaskBuilder{
         private final Task task = new Task();
 
+        /**
+         * This method is used in order to return the built task.
+         * @return a task.
+         */
         public Task build(){
             return task;
         }
+
+        /**
+         * This method is used to set a task header to the incoming String value.
+         * @param header a String with a header name.
+         * @return The method returns itself.
+         */
         public TaskBuilder header(String header){
             task.setHeader(header);
             return this;
         }
+
+        /**
+         * This method is used to set a task description to the incoming String value.
+         * @param description a String with a description.
+         * @return The method returns itself. 
+         */
         public TaskBuilder description(String description){
             task.setDescription(description);
             return this;
         }
+
+        /**
+         * This method is used to set a task estimated time to the incoming String value.
+         * @param time String with a time.
+         * @return The method returns itself.
+         */
         public TaskBuilder estimatedTime(String time){
             task.setEstimatedTime(time);
             return this;
         }
+
+        /**
+         * This method is used to set a tasks current status using a refence to the Class Svimlane.
+         * @param currentStatus An object of the Class Swimlane, containing a status.
+         * @return The method returns itself.
+         */
         public TaskBuilder currentStatus(Swimlane currentStatus){
+            //Ej färdig.
             task.setCurrentStatus(currentStatus);
             return this;
         }
+
+        /**
+         * This method adds who are assigned to a task.
+         * @param assignees Is an ArrayList of users.
+         * @return The method returns itself. 
+         */
         public TaskBuilder assignee(ArrayList<User> assignees){
             task.setAssignees(assignees);
             return this;
         }
+
+        /**
+         * This method adds what tasks the task created are dependent on.
+         * @param dependency Is an ArrayList of tasks.
+         * @return The method returns itself. 
+         */
         public TaskBuilder dependency(ArrayList<Task> dependency){
             task.setDependencies(dependency);
             return this;
         }
+
+        /**
+         * This method is used to flag is help is needed or not using a boolean.
+         * @param flag Is a boolean.
+         * @return The method returns itself. 
+         */
         public TaskBuilder flaggedForHelp(boolean flag){
             task.setFlaggedForHelp(flag);
             return this;
         }
+
+        /**
+         * This method is used to set who the creator for a task is.
+         * @param creator A User object.
+         * @return The method returns itself. 
+         */
         public TaskBuilder creator(User creator){
             task.setCreator(creator);
             return this;
         }
+
+        /**
+         * This method is used to set a list of comments to a task.
+         * @param comments A HashMap of usernames and comments.
+         * @return The method returns itself. 
+         */
         public TaskBuilder comments(HashMap<String, String> comments){
             task.setComments(comments);
             return this;
         }
-
-
     }
-
-
 }
