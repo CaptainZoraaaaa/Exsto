@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Exsto.iml" filepath="$PROJECT_DIR$/.idea/Exsto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exsto.iml" filepath="$PROJECT_DIR$/Exsto.iml" />
     </modules>
   </component>
 </project>
