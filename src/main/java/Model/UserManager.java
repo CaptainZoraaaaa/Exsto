@@ -4,6 +4,8 @@ package Model;
  * @author Anna Håkansson
  * @version 1.0
  *
+ * Last updated: 2022-04-14
+ *
  * Class for managing user functionality
  */
 public class UserManager {

@@ -7,7 +7,7 @@ import java.util.HashMap;
  * @author Anna Håkansson
  * @version 1.0
  *
- * Last update: 22-04-13
+ * Last update: 22-04-14
  *
  * Class for managing project related functions, such as
  * creating, editing, input-check and managing users
@@ -126,7 +126,7 @@ public class ProjectManager {
      * Method for changing the owner of a project. Can only be done by project owner.
      */
     public void changeOwner(boolean isAdmin, User newOwner, User oldOwner) { //TODO added oldOwner
-        HashMap<User, boolean> assignees = currentProject.getAssignedUsers();
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUsers();
         if (assignees.get(oldOwner)) {
             assignees.replace(oldOwner, true, false);
             assignees.replace(newOwner, false, true);
@@ -141,7 +141,7 @@ public class ProjectManager {
      */
     public void addUser(User user) {
         if (user != null) { //if user isnt null
-            HashMap<User, boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+            HashMap<User, Boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
             assignees.put(user, false); //put the user in the hashmap with false admin-value
             currentProject.setAssignedUsers(assignees); //set the hashmap in project
         }
@@ -156,7 +156,7 @@ public class ProjectManager {
      * Method for removing a user from current project.
      */
     public void removeUser(User user) {
-        HashMap<User, boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
         if (!assignees.get(user)) { //if the boolean admin-value for the user isn't true
             assignees.remove(user, false); //remove from hashmap
             currentProject.setAssignedUsers(assignees); //set the hashmap in projekt
