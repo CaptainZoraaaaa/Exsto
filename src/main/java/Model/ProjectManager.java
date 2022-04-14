@@ -43,7 +43,7 @@ public class ProjectManager {
                     .build(); //builds the thing
             return project; //returns the project that was created
         } else {
-            //TODO
+            //TODO error message
             return null;
         }
     }
@@ -120,12 +120,17 @@ public class ProjectManager {
      * @author Anna Håkansson
      *
      * @param isAdmin if the user is project admin or not
-     * @param newOwner the new owner of the project
+     * @param newOwner the new owner of the
+     * @param oldOwner the old owner of the project (e.g. the current user)
      *
      * Method for changing the owner of a project. Can only be done by project owner.
      */
-    public void changeOwner(boolean isAdmin, User newOwner) {
-        //TODO we need to reevaluate the way of storing users in hashmap alternativt ha en userinstansvariabel för projektägaren (jag lade till boolean isAdmin)
+    public void changeOwner(boolean isAdmin, User newOwner, User oldOwner) { //TODO added oldOwner
+        HashMap<User, boolean> assignees = currentProject.getAssignedUsers();
+        if (assignees.get(oldOwner)) {
+            assignees.replace(oldOwner, true, false);
+            assignees.replace(newOwner, false, true);
+        }
     }
 
     /**
@@ -143,7 +148,6 @@ public class ProjectManager {
         else {
             //TODO error message
         }
-        //TODO denna behövs också ändras om hashmaplagringen ändras
     }
 
     /**
