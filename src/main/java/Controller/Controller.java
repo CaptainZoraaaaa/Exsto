@@ -1,11 +1,7 @@
 package Controller;
 
-import Model.ProjectManager;
-import Model.Swimlane;
-import Model.User;
-import Model.UserManager;
+import Model.*;
 import javafx.concurrent.Task;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
