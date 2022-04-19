@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.Controller;
+
 /**
  * @author Anna Håkansson
  * @version 1.0
