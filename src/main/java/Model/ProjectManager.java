@@ -12,6 +12,7 @@ import java.util.HashMap;
  * Class for managing project related functions, such as
  * creating, editing, input-check and managing users
  * assigned to the current project.
+ * hej
  */
 public class ProjectManager {
     private Project currentProject;
