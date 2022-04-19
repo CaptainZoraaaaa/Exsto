@@ -1,22 +1,21 @@
 package Controller;
 
-import Model.ProjectManager;
-import Model.Swimlane;
-import Model.User;
-import Model.UserManager;
+import Model.*;
+import com.example.exsto.globalEntity.Task;
 import javafx.concurrent.Task;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Controller {
+public class Controller<TaskManager> {
     private Task task;
     private User user;
     private ArrayList<Project> projects = new ArrayList<Project>();
     private TaskManager taskManager;
     private UserManager userManager;
     private ProjectManager projectManager;
+    private ServerStub serverStub;
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
     }
@@ -28,12 +27,21 @@ public class Controller {
 
     }
 
-    public void registerNewUser () {
-
+    /**
+     * @param username the choosen username
+     * @param password the chosen password
+     * @param profilePicture
+     */
+    public void registerNewUser (String username, String password, Image profilePicture) {
+        if(username != null && password != null && checkUsername(username)) {
+            user = userManager.createNewUser(username, password, profilePicture);
+        }
+        //todo felmeddelande annars?
     }
 
-    public boolean checkUsername () {
-        return true;
+    public boolean checkUsername (String username) { //todo ändrat parametrar
+        boolean uniqueUsername = serverStub.checkUsername(username);
+        return uniqueUsername;
     }
 
     public void displayMyPages () {
@@ -42,7 +50,8 @@ public class Controller {
     public void displayCalender () {
     }
 
-    public boolean logIn () {
+    public boolean logIn (String username, String password) {
+        boolean login = serverStub.loginCheck(username, password);
         return true;
     }
 

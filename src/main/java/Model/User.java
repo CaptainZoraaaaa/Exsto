@@ -1,5 +1,6 @@
 package Model;
 
+import com.example.exsto.globalEntity.Task;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ public class User {
     private String username;
     private String password;
     private Image profilePicture;
-    private HashMap<Project, boolean> projects = new HashMap<>();
+    private HashMap<Project, Boolean> projects = new HashMap<>();
     private ArrayList<Task> myTasks = new ArrayList<>();
     private final static int USERID = 0;
     //osäker på hur man hanterar statisk variabel. lämnar orörd så länge
@@ -40,11 +41,11 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-    public HashMap<Project, boolean> getProjects() {
+    public HashMap<Project, Boolean> getProjects() {
         return projects;
     }
 
-    public void setProjects(HashMap<Project, boolean> projects) {
+    public void setProjects(HashMap<Project, Boolean> projects) {
         this.projects = projects;
     }
 
@@ -79,7 +80,7 @@ public class User {
             return this;
         }
 
-        public UserBuilder projects(HashMap<Project, boolean> projects) {
+        public UserBuilder projects(HashMap<Project, Boolean> projects) {
             user.setProjects(projects);
             return this;
         }
