@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.newUserController">
    <children>
-      <TextField layoutX="86.0" layoutY="112.0" prefHeight="25.0" prefWidth="227.0" />
+      <TextField layoutX="86.0" layoutY="112.0" prefHeight="25.0" prefWidth="228.0" />
       <Label layoutX="139.0" layoutY="78.0" text="Username" textFill="#ff9d00">
          <font>
             <Font name="Candara Bold" size="28.0" />
