@@ -62,7 +62,7 @@ public class User {
      */
     public static class UserBuilder {
 
-        private final User user = new User();
+        private User user = new User();
 
         /**
          * This method is used in order to return the built user.
