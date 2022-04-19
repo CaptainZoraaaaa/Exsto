@@ -21,6 +21,7 @@ public class ServerStub {
         users.add(userManager.createNewUser("Pelle", "123", null));
         users.add(userManager.createNewUser("Kalle", "password01", null));
         users.add(userManager.createNewUser("Olle", "hejhej", null));
+        System.out.println("setting up");
     }
 
     /**
@@ -33,6 +34,7 @@ public class ServerStub {
      * it doesn't already exist in the server and false if it does.
      */
     public boolean checkUsername(String username) {
+        System.out.println(users.size());
         for(User user : users) {
             if(user.getUsername().equals(username)) {
                 return false;
@@ -52,10 +54,16 @@ public class ServerStub {
      * signed up users and then matching the password.
      */
     public boolean loginCheck(String username, String password) {
-        for(User user : users) {
-            if(user.getUsername().equals(username)) {
-                if(user.getPassword().equals(password)) {
-                    return true;
+        UserManager userManager = new UserManager();
+        users.add(userManager.createNewUser("Pelle", "123", null));
+        users.add(userManager.createNewUser("Kalle", "password01", null));
+        users.add(userManager.createNewUser("Olle", "hejhej", null));
+        for(int i = 0; i < users.size(); i++) {
+            if(users.get(i) != null) {
+                if (users.get(i).getUsername().equals(username)) {
+                    if (users.get(i).getPassword().equals(password)) {
+                        return true;
+                    }
                 }
             }
         }
