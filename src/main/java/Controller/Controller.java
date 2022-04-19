@@ -1,14 +1,12 @@
 package Controller;
 
 import Model.*;
-import com.example.exsto.globalEntity.Task;
-import javafx.concurrent.Task;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Controller<TaskManager> {
+public class Controller {
     private Task task;
     private User user;
     private ArrayList<Project> projects = new ArrayList<Project>();
@@ -52,7 +50,7 @@ public class Controller<TaskManager> {
 
     public boolean logIn (String username, String password) {
         boolean login = serverStub.loginCheck(username, password);
-        return true;
+        return login;
     }
 
     public void logOut () {

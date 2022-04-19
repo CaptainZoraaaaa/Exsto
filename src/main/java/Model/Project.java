@@ -68,11 +68,28 @@ public class Project {
     /**
      * builder-class for Project
      */
-    public class ProjectBuilder{
-
-        public void builder(){
-
+    public static class ProjectBuilder{
+        private final Project project = new Project();
+        public Project build(){
+            return project;
         }
+        public ProjectBuilder projectName(String projectName) {
+            project.setProjectName(projectName);
+            return this;
+        }
+        public ProjectBuilder deadline(LocalDate deadline) {
+            project.setDeadline(deadline);
+            return this;
+        }
+        public ProjectBuilder description(String description) {
+            project.setDescription(description);
+            return this;
+        }
+        public ProjectBuilder userAdmin(User admin) {
+            project.getAssignedUser().put(admin, true);
+            return this;
+        }
+
     }
 
 }

@@ -37,7 +37,7 @@ public class ProjectManager {
         if (name != null && description != null && deadline != null
         && name != "" && description != "") { //check that the variables aren't null or empty
             Project project = new Project.ProjectBuilder() //initiate object and call on ProjectBuilder
-                    .name(name) //the name to be set
+                    .projectName(name) //the name to be set
                     .description(description)//the description to be set
                     .deadline(deadline)//the deadline to be set
                     .userAdmin(userAdmin) //the user that creates the project thus becoming project admin
@@ -59,7 +59,7 @@ public class ProjectManager {
      */
     public void editProjectName(boolean isAdmin, String newName) {
         if (isAdmin && newName != null && newName != "") { //if the user is admin and the new name meets the input criterias
-            currentProject.setName(newName); //set the name in current project object
+            currentProject.setProjectName(newName); //set the name in current project object
         }
         else {
             //TODO error message or return boolean
@@ -127,7 +127,7 @@ public class ProjectManager {
      * Method for changing the owner of a project. Can only be done by project owner.
      */
     public void changeOwner(boolean isAdmin, User newOwner, User oldOwner) { //TODO added oldOwner
-        HashMap<User, Boolean> assignees = currentProject.getAssignedUsers();
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUser();
         if (assignees.get(oldOwner)) {
             assignees.replace(oldOwner, true, false);
             assignees.replace(newOwner, false, true);
@@ -142,9 +142,9 @@ public class ProjectManager {
      */
     public void addUser(User user) {
         if (user != null) { //if user isnt null
-            HashMap<User, Boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+            HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
             assignees.put(user, false); //put the user in the hashmap with false admin-value
-            currentProject.setAssignedUsers(assignees); //set the hashmap in project
+            currentProject.setAssignedUser(assignees); //set the hashmap in project
         }
         else {
             //TODO error message
@@ -157,10 +157,10 @@ public class ProjectManager {
      * Method for removing a user from current project.
      */
     public void removeUser(User user) {
-        HashMap<User, Boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
         if (!assignees.get(user)) { //if the boolean admin-value for the user isn't true
             assignees.remove(user, false); //remove from hashmap
-            currentProject.setAssignedUsers(assignees); //set the hashmap in projekt
+            currentProject.setAssignedUser(assignees); //set the hashmap in projekt
         }
         else {
             //TODO error message + behöver vi isAdmin-boolean?
