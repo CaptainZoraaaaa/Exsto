@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import javafx.concurrent.Task;
+import javafx.scene.image.Image;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

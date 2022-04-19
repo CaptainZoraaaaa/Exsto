@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.exsto.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HelloController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="810.0" fitWidth="566.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/loginSymbols.PNG" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="800.0" prefWidth="982.0" style="-fx-background-color: #171717;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="410.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/locker.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="125.0" layoutY="302.0" text="USERNAME" textFill="#ffae00">
+               <font>
+                  <Font name="Javanese Text" size="45.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTextField" layoutX="453.0" layoutY="335.0" prefHeight="57.0" prefWidth="401.0" />
+            <Label layoutX="125.0" layoutY="426.0" text="PASSWORD" textFill="#ffae00">
+               <font>
+                  <Font name="Javanese Text" size="45.0" />
+               </font>
+            </Label>
+            <TextField fx:id="passwordTextField" layoutX="453.0" layoutY="459.0" prefHeight="57.0" prefWidth="401.0" />
+            <Button fx:id="loginBtn" layoutX="421.0" layoutY="593.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="160.0" text="LOGIN">
+               <font>
+                  <Font name="Candara Bold" size="26.0" />
+               </font>
+            </Button>
+            <Button fx:id="newUserBtn" layoutX="421.0" layoutY="678.0" mnemonicParsing="false" onAction="#newUserScene" prefHeight="61.0" prefWidth="162.0" text="New User">
+               <font>
+                  <Font name="Candara Bold" size="26.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
