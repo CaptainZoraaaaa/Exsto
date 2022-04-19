@@ -88,6 +88,11 @@ public class User {
             user.setMyTasks(tasks);
             return this;
         }
+
+        public UserBuilder profilePicture(Image profilePicture) {
+            user.setProfilePicture(profilePicture);
+            return this;
+        }
     }
 
 }
