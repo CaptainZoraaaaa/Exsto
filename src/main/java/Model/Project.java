@@ -64,6 +64,16 @@ public class Project {
         this.manager = manager;
     }
 
+    public void setName(String newName) {
+    }
+
+    public HashMap<User, Boolean> getAssignedUsers() {
+        return assignedUser;
+    }
+    //TODO lägg till i assigned users
+    public void setAssignedUsers(HashMap<User, Boolean> assignees) {
+
+    }
 
     /**
      * builder-class for Project

@@ -1,6 +1,8 @@
 package Model;
 
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -117,6 +119,11 @@ public class User {
          */
         public UserBuilder tasks(ArrayList<Task> tasks) {
             user.setMyTasks(tasks);
+            return this;
+        }
+
+        public UserBuilder profilePicture(Image profilePicture) {
+            user.setProfilePicture(profilePicture);
             return this;
         }
     }

@@ -11,4 +11,6 @@ module com.example.exsto {
 
     opens com.example.exsto to javafx.fxml;
     exports com.example.exsto;
+    exports Controller;
+    opens Controller to javafx.fxml;
 }
