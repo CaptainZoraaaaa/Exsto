@@ -16,13 +16,21 @@ public class HelloController {
     private TextField passwordTextField;
     @FXML
     private TextField usernameTextField;
+    private Controller controller = new Controller();
 
     public void newUserScene () {
         Main main = new Main();
-        if(usernameTextField.getText().equals("123") && passwordTextField.getText().equals("123")){
-            main.changeScene("UserScene.fxml");
-        }else{
-            System.out.println("nope");
+         main.changeScene("UserScene.fxml");
+    }
+
+    public void logIn() {
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        if(controller.logIn(username, password)) {
+            System.out.println(">> Login successful <<");
+        }
+        else {
+            System.out.println(">> Login failed <<");
         }
     }
 }

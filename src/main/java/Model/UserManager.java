@@ -27,8 +27,9 @@ public class UserManager {
      */
     public User createNewUser(String username, String password, Image image) {
         //TODO check in server if username doesn't exist
+        User user = null;
         if(username != null && username != "" && password != null && password != "") { //if username and password isnt null or empty string
-            User user = new User.UserBuilder() //make new user with builder
+            user = new User.UserBuilder() //make new user with builder
                     .username(username)
                     .password(password)
                     .image(image)
