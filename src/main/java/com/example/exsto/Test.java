@@ -9,6 +9,6 @@ public class Test {
 
         User user = manager.createNewUser("Pelle", "123", null);
 
-        System.out.println(user.getUsername());
+        System.out.println(user.getUsername() + user.getPassword());
     }
 }
