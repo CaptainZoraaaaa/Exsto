@@ -1,8 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /**
  * This class is used to handle operations for a task.
  * @author Christian Edvall
@@ -10,10 +7,7 @@ import java.util.HashMap;
  */
 public class TaskManager {
     private Task task;
-    public TaskManager(){
-
-    }
-
+    public TaskManager(){}
     /**
      * This method is used in order to create a task with it's incoming parameters. It does so by using the Task-class
      * builder.
