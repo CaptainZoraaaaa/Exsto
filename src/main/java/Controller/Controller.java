@@ -13,6 +13,7 @@ public class Controller {
     private TaskManager taskManager;
     private UserManager userManager;
     private ProjectManager projectManager;
+    private ServerStub serverStub;
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
     }
@@ -24,12 +25,21 @@ public class Controller {
 
     }
 
-    public void registerNewUser () {
-
+    /**
+     * @param username the choosen username
+     * @param password the chosen password
+     * @param profilePicture
+     */
+    public void registerNewUser (String username, String password, Image profilePicture) {
+        if(username != null && password != null && checkUsername(username)) {
+            user = userManager.createNewUser(username, password, profilePicture);
+        }
+        //todo felmeddelande annars?
     }
 
-    public boolean checkUsername () {
-        return true;
+    public boolean checkUsername (String username) { //todo ändrat parametrar
+        boolean uniqueUsername = serverStub.checkUsername(username);
+        return uniqueUsername;
     }
 
     public void displayMyPages () {
@@ -38,8 +48,9 @@ public class Controller {
     public void displayCalender () {
     }
 
-    public boolean logIn () {
-        return true;
+    public boolean logIn (String username, String password) {
+        boolean login = serverStub.loginCheck(username, password);
+        return login;
     }
 
     public void logOut () {

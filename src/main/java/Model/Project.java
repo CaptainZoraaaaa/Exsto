@@ -79,32 +79,27 @@ public class Project {
      * builder-class for Project
      */
     public static class ProjectBuilder{
-
-        private Project project = new Project();
-
-        public ProjectBuilder name(String name) {
-            project.setProjectName(name);
+        private final Project project = new Project();
+        public Project build(){
+            return project;
+        }
+        public ProjectBuilder projectName(String projectName) {
+            project.setProjectName(projectName);
             return this;
         }
-
-        public ProjectBuilder description(String description) {
-            project.setDescription(description);
-            return this;
-        }
-
         public ProjectBuilder deadline(LocalDate deadline) {
             project.setDeadline(deadline);
             return this;
         }
-
-        public ProjectBuilder userAdmin(User userAdmin) {
-            //TODO Seter for project admin needs to be implemented
+        public ProjectBuilder description(String description) {
+            project.setDescription(description);
+            return this;
+        }
+        public ProjectBuilder userAdmin(User admin) {
+            project.getAssignedUser().put(admin, true);
             return this;
         }
 
-        public Project build() {
-            return project;
-        }
     }
 
 }
