@@ -91,6 +91,20 @@ public class Project {
             project.setDescription(description);
             return this;
         }
+
+        public ProjectBuilder deadline(LocalDate deadline) {
+            project.setDeadline(deadline);
+            return this;
+        }
+
+        public ProjectBuilder userAdmin(User userAdmin) {
+            //TODO Seter for project admin needs to be implemented
+            return this;
+        }
+
+        public Project build() {
+            return project;
+        }
     }
 
 }
