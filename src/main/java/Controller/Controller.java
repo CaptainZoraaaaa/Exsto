@@ -9,13 +9,15 @@ import java.util.ArrayList;
 public class Controller {
     private Task task;
     private User user;
-    private ArrayList<Project> projects = new ArrayList<Project>();
+    private ArrayList<Project> projects = new ArrayList<>();
     private TaskManager taskManager;
     private UserManager userManager;
     private ProjectManager projectManager;
     private ServerStub serverStub;
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
+        Project project = projectManager.createProject(name, description, deadline, userAdmin);
+        projects.add(project);
     }
 
     public void editProject () {
