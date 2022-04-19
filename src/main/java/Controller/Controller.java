@@ -13,9 +13,9 @@ public class Controller {
     private User user;
     private ArrayList<Project> projects = new ArrayList<Project>();
     private TaskManager taskManager;
-    private UserManager userManager;
+    private UserManager userManager = new UserManager();
     private ProjectManager projectManager;
-    private ServerStub serverStub;
+    private ServerStub serverStub = new ServerStub();
 
     public void createNewProject(String name, String description, LocalDate deadline, User userAdmin) {
     }
@@ -32,11 +32,15 @@ public class Controller {
      * @param password the chosen password
      * @param profilePicture
      */
-    public void registerNewUser (String username, String password, Image profilePicture) {
+    public boolean registerNewUser (String username, String password, Image profilePicture) {
         if(username != null && password != null && checkUsername(username)) {
             user = userManager.createNewUser(username, password, profilePicture);
+            return true;
         }
-        //todo felmeddelande annars?
+        else {
+            return false;
+        }
+        //todo felmeddelande annars? ÄNDRADE TILL BOOLEAN
     }
 
     public boolean checkUsername (String username) { //todo ändrat parametrar
