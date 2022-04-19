@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.Controller;
+import javafx.scene.image.Image;
 
 /**
  * @author Anna Håkansson
