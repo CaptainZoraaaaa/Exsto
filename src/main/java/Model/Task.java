@@ -1,4 +1,4 @@
-package com.example.exsto.globalEntity;
+package Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class Task {
     private boolean flaggedForHelp;
     private User creator;
     private HashMap<String, String> comments = new HashMap<>(); // String 1 = username, String 2 = comment.
-    final static int TASK_ID = 0;
+    private static int TASK_ID = 0;
 
     public String getHeader() {
         return header;
@@ -48,8 +48,8 @@ public class Task {
     public ArrayList<User> getAssignees() {
         return assignees;
     }
-    public void setAssignees(ArrayList<User> assignees) {
-        this.assignees = assignees;
+    public void setAssignees(User assignee) {
+        assignees.add(assignee);
     }
     public ArrayList<Task> getDependencies() {
         return dependencies;
@@ -72,23 +72,23 @@ public class Task {
     public HashMap<String, String> getComments() {
         return comments;
     }
-    public void setComments(HashMap<String, String> comments) {
-        this.comments = comments;
+    public void setComments(String username, String comment) {
+        comments.put(username, comment);
     }
     //Osäker kring hur implementation av task ID ska fungera så lämnar detta tillsvidare.
     public int getTASK_ID(){
         return TASK_ID;
     }
-    public void setTASK_ID(){
-        
+    public void setTASK_ID(int id){
+        this.TASK_ID = id;
     }
 
     /**
      * This is Tasks inner class, this class is a builder and is used in order to create new tasks.
      * @author Christian Edvall
-     * @version
+     * @version 1.0
      */
-    public class TaskBuilder{
+    public static class TaskBuilder{
         private final Task task = new Task();
 
         /**
@@ -97,6 +97,16 @@ public class Task {
          */
         public Task build(){
             return task;
+        }
+
+        /**
+         * This method is used to set a task header to the incoming int value.
+         * @param id int
+         * @return the method returns itself.
+         */
+        public TaskBuilder id(int id){
+            task.setTASK_ID(id);
+            return this;
         }
 
         /**
@@ -142,11 +152,11 @@ public class Task {
 
         /**
          * This method adds who are assigned to a task.
-         * @param assignees Is an ArrayList of users.
+         * @param assignee user object.
          * @return The method returns itself. 
          */
-        public TaskBuilder assignee(ArrayList<User> assignees){
-            task.setAssignees(assignees);
+        public TaskBuilder assignee(User assignee){
+            task.setAssignees(assignee);
             return this;
         }
 
@@ -182,11 +192,12 @@ public class Task {
 
         /**
          * This method is used to set a list of comments to a task.
-         * @param comments A HashMap of usernames and comments.
+         * @param username String of username.
+         * @param comment String of comment.
          * @return The method returns itself. 
          */
-        public TaskBuilder comments(HashMap<String, String> comments){
-            task.setComments(comments);
+        public TaskBuilder comments(String username, String comment){
+            task.setComments(username, comment);
             return this;
         }
     }
