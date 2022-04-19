@@ -20,18 +20,18 @@ public class UserManager {
      *
      * @param username the selected username
      * @param password the selected password
-     * @param profilePicture the users profile picture
+     * @param image the users profile picture
      * @return the new userObject
      *
      * Method for create new user with a UserBuilder.
      */
-    public User createNewUser(String username, String password, Image profilePicture) {
+    public User createNewUser(String username, String password, Image image) {
         //TODO check in server if username doesn't exist
         if(username != null && username != "" && password != null && password != "") { //if username and password isnt null or empty string
             User user = new User.UserBuilder() //make new user with builder
                     .username(username)
                     .password(password)
-                    .profilePicture(profilePicture)
+                    .image(image)
                     .build();
         }
         return user; //return the new user
