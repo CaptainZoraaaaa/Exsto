@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
- * objects of this class holds the outline for a project
+ * objects of this class holds the outline for a project.
  */
 public class Project {
     private String projectName;
