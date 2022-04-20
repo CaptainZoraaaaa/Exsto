@@ -7,11 +7,12 @@ import java.util.HashMap;
  * @author Anna Håkansson
  * @version 1.0
  *
- * Last update: 22-04-13
+ * Last update: 22-04-14
  *
  * Class for managing project related functions, such as
  * creating, editing, input-check and managing users
  * assigned to the current project.
+ * hej
  */
 public class ProjectManager {
     private Project currentProject;
@@ -36,14 +37,14 @@ public class ProjectManager {
         if (name != null && description != null && deadline != null
         && name != "" && description != "") { //check that the variables aren't null or empty
             Project project = new Project.ProjectBuilder() //initiate object and call on ProjectBuilder
-                    .name(name) //the name to be set
+                    .projectName(name) //the name to be set
                     .description(description)//the description to be set
                     .deadline(deadline)//the deadline to be set
                     .userAdmin(userAdmin) //the user that creates the project thus becoming project admin
                     .build(); //builds the thing
             return project; //returns the project that was created
         } else {
-            //TODO
+            //TODO error message
             return null;
         }
     }
@@ -58,7 +59,7 @@ public class ProjectManager {
      */
     public void editProjectName(boolean isAdmin, String newName) {
         if (isAdmin && newName != null && newName != "") { //if the user is admin and the new name meets the input criterias
-            currentProject.setName(newName); //set the name in current project object
+            currentProject.setProjectName(newName); //set the name in current project object
         }
         else {
             //TODO error message or return boolean
@@ -120,12 +121,17 @@ public class ProjectManager {
      * @author Anna Håkansson
      *
      * @param isAdmin if the user is project admin or not
-     * @param newOwner the new owner of the project
+     * @param newOwner the new owner of the
+     * @param oldOwner the old owner of the project (e.g. the current user)
      *
      * Method for changing the owner of a project. Can only be done by project owner.
      */
-    public void changeOwner(boolean isAdmin, User newOwner) {
-        //TODO we need to reevaluate the way of storing users in hashmap alternativt ha en userinstansvariabel för projektägaren (jag lade till boolean isAdmin)
+    public void changeOwner(boolean isAdmin, User newOwner, User oldOwner) { //TODO added oldOwner
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUser();
+        if (assignees.get(oldOwner)) {
+            assignees.replace(oldOwner, true, false);
+            assignees.replace(newOwner, false, true);
+        }
     }
 
     /**
@@ -136,14 +142,13 @@ public class ProjectManager {
      */
     public void addUser(User user) {
         if (user != null) { //if user isnt null
-            HashMap<User, boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+            HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
             assignees.put(user, false); //put the user in the hashmap with false admin-value
-            currentProject.setAssignedUsers(assignees); //set the hashmap in project
+            currentProject.setAssignedUser(assignees); //set the hashmap in project
         }
         else {
             //TODO error message
         }
-        //TODO denna behövs också ändras om hashmaplagringen ändras
     }
 
     /**
@@ -152,10 +157,10 @@ public class ProjectManager {
      * Method for removing a user from current project.
      */
     public void removeUser(User user) {
-        HashMap<User, boolean> assignees = currentProject.getAssignedUsers(); //get the assignedUsers hashmap and store in temporary variable
+        HashMap<User, Boolean> assignees = currentProject.getAssignedUser(); //get the assignedUsers hashmap and store in temporary variable
         if (!assignees.get(user)) { //if the boolean admin-value for the user isn't true
             assignees.remove(user, false); //remove from hashmap
-            currentProject.setAssignedUsers(assignees); //set the hashmap in projekt
+            currentProject.setAssignedUser(assignees); //set the hashmap in projekt
         }
         else {
             //TODO error message + behöver vi isAdmin-boolean?

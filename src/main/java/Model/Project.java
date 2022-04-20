@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
- * objects of this class holds the outline for a project
+ * objects of this class holds the outline for a project.
  */
 public class Project {
     private String projectName;
@@ -64,15 +64,42 @@ public class Project {
         this.manager = manager;
     }
 
+    public void setName(String newName) {
+    }
+
+    public HashMap<User, Boolean> getAssignedUsers() {
+        return assignedUser;
+    }
+    //TODO lägg till i assigned users
+    public void setAssignedUsers(HashMap<User, Boolean> assignees) {
+
+    }
 
     /**
      * builder-class for Project
      */
-    public class ProjectBuilder{
-
-        public void builder(){
-
+    public static class ProjectBuilder{
+        private final Project project = new Project();
+        public Project build(){
+            return project;
         }
+        public ProjectBuilder projectName(String projectName) {
+            project.setProjectName(projectName);
+            return this;
+        }
+        public ProjectBuilder deadline(LocalDate deadline) {
+            project.setDeadline(deadline);
+            return this;
+        }
+        public ProjectBuilder description(String description) {
+            project.setDescription(description);
+            return this;
+        }
+        public ProjectBuilder userAdmin(User admin) {
+            project.getAssignedUser().put(admin, true);
+            return this;
+        }
+
     }
 
 }
