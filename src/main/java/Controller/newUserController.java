@@ -23,7 +23,7 @@ public class newUserController {
     private Controller controller = new Controller();
 
     @FXML
-    void newRegistration(ActionEvent event) {
+    void newRegistration() {
         String username = usernameField.getText();
         String password1 = passwordField.getText();
         String password2 = reEnterPasswordField.getText();
